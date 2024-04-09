@@ -31,7 +31,6 @@ window.createElement = (coin) => {
 };
 
 window.appendElement = (coin, arCoin) => {
-  console.log('arCoin : ', arCoin);
   const listDiv = document.getElementById('list');
   const item = coin;
 

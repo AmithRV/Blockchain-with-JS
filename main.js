@@ -5,6 +5,7 @@ class Block {
     this.data = data;
     this.previousHash = previousHash;
     this.hash = this.calculateHash();
+    this.nonce = 0;
   }
 
   calculateHash() {
@@ -12,13 +13,33 @@ class Block {
       this.index +
         this.timeStamp +
         this.previousHash +
-        JSON.stringify(this.data)
+        JSON.stringify(this.data) +
+        this.nonce
     ).toString();
+  }
+
+  mineBlock(difficulty) {
+    console.log('-----------------------------------------------');
+    console.log('mining...');
+
+    // While generating the new hash we can only update the nonce,
+    // since all other attributes are details of the block, so we can't change it
+
+    const targetPrefix = '0'.repeat(difficulty);
+
+    while (this.hash.substring(0, difficulty) !== targetPrefix) {
+      this.hash = this.calculateHash();
+      this.nonce++;
+    }
+
+    console.log('block mined : ', this.hash);
+    console.log('-----------------------------------------------');
   }
 }
 
 class Blockchain {
   constructor() {
+    this.difficulty = 4;
     this.chain = [this.createGenesisBlock()];
   }
 
@@ -34,7 +55,8 @@ class Blockchain {
   addBlock(newBlock) {
     newBlock.index = this.chain.length;
     newBlock.previousHash = this.getLatestBlock().hash;
-    newBlock.hash = newBlock.calculateHash();
+    // newBlock.hash = newBlock.calculateHash();
+    newBlock.mineBlock(this.difficulty);
     this.chain.push(newBlock);
   }
 

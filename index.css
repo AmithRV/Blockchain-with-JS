@@ -21,14 +21,11 @@ body {
     scrollbar-width: 0;
     -ms-overflow-style: none;
     scrollbar-width: none;
-
 }
 
 .section-2::-webkit-scrollbar {
     display: none;
 }
-
-
 
 .box {
     border: 1px solid gray;

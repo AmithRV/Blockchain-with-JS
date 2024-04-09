@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+}
+
+.section-1 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.section-2 {
+    width: calc(90% - 2px);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    scrollbar-width: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+}
+
+.section-2::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.box {
+    border: 1px solid gray;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    overflow: hidden;
+    align-items: flex-start;
+    margin-top: 10px;
+    padding: 5px;
+    min-height: 100px;
+}
